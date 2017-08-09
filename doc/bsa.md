@@ -8,9 +8,9 @@
 ## File Structure
 
 * [header](#header)
-* List of [folderRecords](#folderRecords) (folderCount items)
-* List of [fileRecordBlocks](#fileRecordBlocks) (folderCount * [folderRecords](#folderRecords).count items)
-* List of filename [fileNameBlock](#fileNameBlock) (fileCount items)
+* List of [folderRecords](#folderrecords) (folderCount items)
+* List of [fileRecordBlocks](#fileRecordblocks) (folderCount * [folderRecords](#folderrecords).count items)
+* List of filename [fileNameBlock](#filenameblock) (fileCount items)
 * [files](#files)
 
 ### header
