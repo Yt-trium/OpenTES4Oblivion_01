@@ -64,7 +64,8 @@
 * size (32bit unsigned int)
 * offset (32bit unsigned int)
 
-### fileNameBlock (archive flag 2 is set)
+### fileNameBlock
+(archive flag 2 is set)
 * List of lower case file names, one after another (ending with a 0) ordered in the same order as those generated with the fileRecord's fileRecordBlocks.
 
 ### files
