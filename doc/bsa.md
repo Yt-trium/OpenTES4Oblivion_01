@@ -9,7 +9,7 @@
 
 * [header](#header)
 * List of [folderRecords](#folderrecords) (folderCount items)
-* List of [fileRecordBlocks](#fileRecordblocks) (folderCount * [folderRecords](#folderrecords).count items)
+* List of [fileRecordBlocks](#filerecordblocks) (folderCount * [folderRecords](#folderrecords).count items)
 * List of filename [fileNameBlock](#filenameblock) (fileCount items)
 * [files](#files)
 
