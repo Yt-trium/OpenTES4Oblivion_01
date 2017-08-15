@@ -3,6 +3,7 @@
 ## Table of contents
 
 * [File Structure](#file-structure)
+* [Information about types](#information-about-types)
 * [About](#about)
 
 ## File Structure
