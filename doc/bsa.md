@@ -3,7 +3,7 @@
 ## Table of contents
 
 * [File Structure](#file-structure)
-* [Information about types](#information-about-types)
+* [Informations about types](#informations-about-types)
 * [About](#about)
 
 ## File Structure
@@ -80,9 +80,11 @@ The files are listed in the fileRecord and the data are stored after the offset 
 #### compressed file block
 * data[size] (8bit)
 
-uesp.net wiki information : if bit 9 of archiveFlags is set, the file data blocks begin with a bstring containing the full path of the file (not tested yet, more information soon).
+uesp.net wiki information : if bit 9 of archiveFlags is set, the file data blocks begin with a bstring containing the full path of the file.
+After some tests, this information doesn't seem right.
+If you have more information, help will be appreciated.
 
-## Information about types
+## Informations about types
 
 * bstring : string prefixed with length (byte) and not terminated with a zero.
 * bzstring : string prefixed with length (byte) and terminated with a zero.
