@@ -8,7 +8,7 @@ The project is inspired by the OpenTESArena, OpenMW and all the open source re-i
 
 ## Current tasks (Early Stages)
 
-- BSA file documentation
+- ~~BSA file documentation~~
 - ESM file documentation
-- ESP file documentation
+- ESP file documentatioN
 - BSA/ESM/ESP file editor
