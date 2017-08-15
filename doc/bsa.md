@@ -53,7 +53,7 @@
 ### fileRecordBlocks
 
 ##### bit 1 of archive flags is set
-* name (bzstring(byte(length + string terminated with 0))
+* name (bzstring)
 * [fileRecords](#filerecord)
 
 ##### bit 1 of archive flags is not set
@@ -70,8 +70,22 @@
 
 ### files
 
-Not documented yet.
+The files are listed in the fileRecord and the data are stored after the offset address.
+
+#### uncompressed file block
+* originalSize (32bit unsigned int)
+* data[size] (8bit)
+
+#### compressed file block
+* data[size] (8bit)
+
+uesp.net wiki information : if bit 9 of archiveFlags is set, the file data blocks begin with a bstring containing the full path of the file (not tested yet, more information soon).
+
+## Information about types
+
+* bstring : string prefixed with length (byte) and not terminated with a zero.
+* bzstring : string prefixed with length (byte) and terminated with a zero.
 
 ## About
 
-This documentation is based on the uesp.net wiki information about the bsa file format.
+This documentation is based on the uesp.net wiki information about the bsa file format and the test performed on the TES4 originals bsa files.
