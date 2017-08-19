@@ -7,6 +7,7 @@
 #include <QFileInfo>
 
 #include "TES4Files/tes4files.h"
+#include "TES4FilesUI/tes4files_ui.h"
 
 namespace Ui {
 class MainWindow;

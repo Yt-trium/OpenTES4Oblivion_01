@@ -51,6 +51,11 @@ void MainWindow::bsa(QString filename)
 
     TES4FileBSA bsafile(filename.toStdString());
 
+    TES4FileBSA_UI *bsaui = new TES4FileBSA_UI(this);
+
+    ui->mdiArea->addSubWindow(bsaui);
+    bsaui->show();
+
     qDebug() << "<- bsa(" << filename << ")";
 }
 
