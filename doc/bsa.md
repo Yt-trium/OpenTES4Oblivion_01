@@ -75,3 +75,6 @@ The files are listed in the fileRecord and the data are stored after the offset 
 
 #### compressed file block
 * data[size] (char[size])
+
+uesp.net wiki information : if bit 9 of archiveFlags is set, the file data blocks begin with a bstring containing the full path of the file.
+After some tests, this information doesn't seem right. If you have more information, help will be appreciated.
