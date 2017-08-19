@@ -3,3 +3,4 @@ Data
 *.lnk
 desktop.ini
 tmp
+*.pro.user
