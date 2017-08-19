@@ -1,10 +1,6 @@
 # BSA File Format
 
-## Table of contents
-
-* [File Structure](#file-structure)
-* [Informations about types](#informations-about-types)
-* [About](#about)
+The BSA are Bethesda Softworks Archive files.
 
 ## File Structure
 
@@ -17,9 +13,9 @@
 ### header
 
 * fileId (char[4])
-* version (32bit unsigned int)
-* offset (32bit unsigned int)
-* archiveFlags (32bit unsigned int) (bits 1, 2, 9, 10, 11 are set in all official BSA files) (bits 4, 5, 6, 8 has no effect on the file structure)
+* version (ulong)
+* offset (ulong)
+* archiveFlags (ulong) (bits 1, 2, 9, 10, 11 are set in all official BSA files) (bits 4, 5, 6, 8 has no effect on the file structure)
   * bit 1 - Archive has names for directories
   * bit 2 - Archive has names for files
   * bit 3 - Files are by default compressed
@@ -31,11 +27,11 @@
   * bit 9 - Unknown
   * bit 10 - Unknown
   * bit 11 - Unknown
-* folderCount (32bit unsigned int)
-* fileCount (32bit unsigned int)
-* totalFolderNameLength (32bit unsigned int)
-* totalFileNameLength (32bit unsigned int)
-* fileFlags (32bit unsigned int)
+* folderCount (ulong)
+* fileCount (ulong)
+* totalFolderNameLength (ulong)
+* totalFileNameLength (ulong)
+* fileFlags (ulong)
   * bit 1 - Meshes
   * bit 2 - Textures
   * bit 3 - Menus
@@ -47,9 +43,9 @@
   * bit 9 - Miscellaneous
 
 ### folderRecords
-* nameHash (64bit hash of string)
-* count (32bit unsigned int)
-* offset (32bit unsigned int)
+* nameHash (bsa hash of string 8 bytes)
+* count (ulong)
+* offset (ulong)
 
 ### fileRecordBlocks
 
@@ -61,9 +57,9 @@
 * [fileRecords](#filerecord)
 
 ####  fileRecord
-* nameHash (64bit hash of string)
-* size (32bit unsigned int)
-* offset (32bit unsigned int)
+* nameHash (bsa hash of string 8 bytes)
+* size (ulong)
+* offset (ulong)
 
 ### fileNameBlock
 (archive flag 2 is set)
@@ -74,21 +70,8 @@
 The files are listed in the fileRecord and the data are stored after the offset address.
 
 #### uncompressed file block
-* originalSize (32bit unsigned int)
-* data[size] (8bit)
+* originalSize (ulong)
+* data[size] (char[size])
 
 #### compressed file block
-* data[size] (8bit)
-
-uesp.net wiki information : if bit 9 of archiveFlags is set, the file data blocks begin with a bstring containing the full path of the file.
-After some tests, this information doesn't seem right.
-If you have more information, help will be appreciated.
-
-## Informations about types
-
-* bstring : string prefixed with length (byte) and not terminated with a zero.
-* bzstring : string prefixed with length (byte) and terminated with a zero.
-
-## About
-
-This documentation is based on the uesp.net wiki information about the bsa file format and the test performed on the TES4 originals bsa files.
+* data[size] (char[size])
