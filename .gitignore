@@ -2,3 +2,4 @@ build-*
 Data
 *.lnk
 desktop.ini
+tmp
