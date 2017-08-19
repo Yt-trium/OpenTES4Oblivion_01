@@ -48,6 +48,9 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::bsa(QString filename)
 {
     qDebug() << "-> bsa(" << filename << ")";
+
+    TES4FileBSA bsafile(filename.toStdString());
+
     qDebug() << "<- bsa(" << filename << ")";
 }
 

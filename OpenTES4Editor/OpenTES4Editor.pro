@@ -19,10 +19,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    TES4Files/tes4filebsa.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    TES4Files/tes4filebsa.h \
+    TES4Files/tes4files.h \
+    TES4Files/tes4filestypes.h
 
 FORMS += \
         mainwindow.ui
