@@ -105,3 +105,46 @@ void TES4FileBSA::read()
 
     file.close();
 }
+
+File TES4FileBSA::getFile(FileRecord fr)
+{
+    std::ifstream file;
+    file.open(filename, std::ifstream::binary);
+    file.seekg(fr.offset);
+
+    std::bitset<32> archiveFlags(header.archiveFlags);
+    std::bitset<32> flag(fr.size);
+
+    File fi;
+
+    if(archiveFlags.test(2) ^ flag.test(30))
+    {
+        // file is compressed
+        CompressedFile cfi;
+        cfi.data = (char*) malloc(fr.size);
+        cfi.originalSize = 0;
+
+        file.read((char*) (&cfi.originalSize), sizeof(cfi.originalSize));
+        file.read((char*) cfi.data, fr.size);
+
+        fi = decompress(cfi,fr.size);
+        free(cfi.data);
+    }
+    else
+    {
+        fi.data = (char*) malloc(fr.size);
+        file.read((char*) fi.data, fr.size);
+    }
+
+    file.close();
+    return fi;
+}
+
+File TES4FileBSA::decompress(CompressedFile f, ulong_ oSize)
+{
+    File fi;
+    fi.data = (char*) malloc(f.originalSize);
+    uncompress((Byte*)fi.data,(uLongf*)&f.originalSize,(Byte*)f.data,oSize);
+
+    return fi;
+}

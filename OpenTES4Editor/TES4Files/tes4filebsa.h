@@ -21,6 +21,7 @@ public:
     std::vector<std::string> getFileNameBlock();
 
     void read();
+    File getFile(FileRecord fr);
 
 private:
     std::string filename;
@@ -36,6 +37,9 @@ private:
 
     // fileNameBlock
     std::vector<std::string> fileNameBlock;
+
+    // file
+    File decompress(CompressedFile f, ulong_ oSize);
 };
 
 #endif // TES4FILEBSA_H

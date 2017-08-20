@@ -64,6 +64,7 @@ void TES4FileBSA_UI::updateUI()
             ui->tableWidget_FileRecordBlocksAndFileNameBlock->insertRow(ui->tableWidget_FileRecordBlocksAndFileNameBlock->rowCount());
 
             FileRecord fileRecord = fileRecordBlock.fileRecord.at(j);
+            linearFilesRecord.push_back(fileRecord);
 
             ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,0,new QTableWidgetItem(QString(fileRecordBlock.name.string)));
             ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,1,new QTableWidgetItem(QString::number(fileRecord.nameHash,16).toUpper()));
@@ -78,4 +79,28 @@ void TES4FileBSA_UI::updateUI()
     }
     ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeColumnsToContents();
     ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeRowsToContents();
+}
+
+void TES4FileBSA_UI::on_pushButton_Open_clicked()
+{
+    if(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow() == -1)
+        return;
+}
+
+void TES4FileBSA_UI::on_pushButton_Save_clicked()
+{
+    if(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow() == -1)
+        return;
+    FileRecord fr = linearFilesRecord.at(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow());
+    File f = bsa->getFile(fr);
+
+    QString filename =
+            QFileDialog::getSaveFileName(this,
+                                         "Save file");
+
+    if(!filename.isEmpty())
+    {
+        std::ofstream outfile (filename.toStdString().c_str(),std::ofstream::binary);
+        outfile.write(f.data, fr.size);
+    }
 }
