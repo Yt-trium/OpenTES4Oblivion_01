@@ -49,9 +49,12 @@ void MainWindow::bsa(QString filename)
 {
     qDebug() << "-> bsa(" << filename << ")";
 
-    TES4FileBSA bsafile(filename.toStdString());
+    TES4FileBSA *bsafile = new TES4FileBSA(filename.toStdString());
 
-    TES4FileBSA_UI *bsaui = new TES4FileBSA_UI(this);
+    TES4FileBSA_UI *bsaui = new TES4FileBSA_UI(this, bsafile);
+
+    QFileInfo fileInfo(filename);
+    bsaui->setWindowTitle(QString("TES4FileBSA " + fileInfo.fileName()));
 
     ui->mdiArea->addSubWindow(bsaui);
     bsaui->show();

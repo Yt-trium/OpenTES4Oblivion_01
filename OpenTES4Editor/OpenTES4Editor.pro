@@ -29,8 +29,11 @@ HEADERS += \
     TES4Files/tes4files.h \
     TES4Files/tes4filestypes.h \
     TES4FilesUI/tes4filebsa_ui.h \
-    TES4FilesUI/tes4files_ui.h
+    TES4FilesUI/tes4files_ui.h \
+    TES4Files/tes4filebsastructs.h
 
 FORMS += \
         mainwindow.ui \
     TES4FilesUI/tes4filebsa_ui.ui
+
+LIBS += -lz

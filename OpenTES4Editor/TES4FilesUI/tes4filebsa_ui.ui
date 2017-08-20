@@ -6,13 +6,221 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TES4FileBSA</string>
   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_FolderRecords">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>FolderRecords</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="2">
+    <widget class="QGroupBox" name="groupBoxHeader">
+     <property name="title">
+      <string>Header</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="6" column="2">
+       <widget class="QLabel" name="label_totalFolderNameLength">
+        <property name="text">
+         <string>totalFolderNameLength</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_archiveFlags">
+        <property name="text">
+         <string>archiveFlags</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="label_fileCount">
+        <property name="text">
+         <string>fileCount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_fileId">
+        <property name="text">
+         <string>fileId</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_fileId_">
+        <property name="text">
+         <string>fileId</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="label_folderCount">
+        <property name="text">
+         <string>folderCount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_version">
+        <property name="text">
+         <string>version</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_offset">
+        <property name="text">
+         <string>offset</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="label_totalFileNameLength">
+        <property name="text">
+         <string>totalFileNameLength</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="label_fileFlags">
+        <property name="text">
+         <string>fileFlags</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_version_">
+        <property name="text">
+         <string>version</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_offset_">
+        <property name="text">
+         <string>offset</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_archiveFlags_">
+        <property name="text">
+         <string>archiveFlags</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLabel" name="label_folderCount_">
+        <property name="text">
+         <string>folderCount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLabel" name="label_fileCount_">
+        <property name="text">
+         <string>fileCount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLabel" name="label_totalFolderNameLength_">
+        <property name="text">
+         <string>totalFolderNameLength</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLabel" name="label_totalFileNameLength_">
+        <property name="text">
+         <string>totalFileNameLength</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3">
+       <widget class="QLabel" name="label_fileFlags_">
+        <property name="text">
+         <string>fileFlags</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QTableWidget" name="tableWidget_FolderRecords">
+     <column>
+      <property name="text">
+       <string>nameHash</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>count</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>offset</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QTableWidget" name="tableWidget_FileRecordBlocksAndFileNameBlock">
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>nameHash</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>size</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>offset</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>fileName</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label_FileRecordBlocksAndFileNameBlock">
+     <property name="text">
+      <string>FileRecordBlocks &amp; FileNameBlock</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
