@@ -2,7 +2,10 @@
 #define TES4FILEBSA_UI_H
 
 #include <QWidget>
+#include <QMdiArea>
+#include <QMdiSubWindow>
 #include <QFileDialog>
+#include <QTextEdit>
 
 #include "TES4Files/tes4files.h"
 
@@ -15,7 +18,7 @@ class TES4FileBSA_UI : public QWidget
     Q_OBJECT
 
 public:
-    explicit TES4FileBSA_UI(QWidget *parent = 0, TES4FileBSA *bsa = NULL);
+    explicit TES4FileBSA_UI(QWidget *parent = 0, QMdiArea *mdi = NULL, TES4FileBSA *bsa = NULL);
     ~TES4FileBSA_UI();
 
 private slots:
@@ -24,7 +27,7 @@ private slots:
 
 private:
     Ui::TES4FileBSA_UI *ui;
-
+    QMdiArea *mdiArea;
     TES4FileBSA *bsa;
     std::vector<FileRecord> linearFilesRecord;
 
