@@ -49,6 +49,11 @@ void MainWindow::bsa(QString filename)
 {
     qDebug() << "-> bsa(" << filename << ")";
 
+    ui->statusBar->showMessage("[Loading](" + filename + ")");
+
+    QElapsedTimer timer;
+    timer.start();
+
     TES4FileBSA *bsafile = new TES4FileBSA(filename.toStdString());
 
     TES4FileBSA_UI *bsaui = new TES4FileBSA_UI(this, ui->mdiArea, bsafile);
@@ -58,6 +63,9 @@ void MainWindow::bsa(QString filename)
 
     ui->mdiArea->addSubWindow(bsaui);
     bsaui->show();
+
+    ui->statusBar->showMessage("[Loaded] in " +
+        QString::number(timer.nsecsElapsed()/1000000) + "ms (" + filename + ")");
 
     qDebug() << "<- bsa(" << filename << ")";
 }

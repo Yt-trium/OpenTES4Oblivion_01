@@ -2,6 +2,8 @@
 #define TES4FILEBSA_UI_H
 
 #include <QWidget>
+#include <QDebug>
+#include <QElapsedTimer>
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QFileDialog>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QFileDialog>
 #include <QFileInfo>
 

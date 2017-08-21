@@ -8,7 +8,9 @@ TES4FileBSA_UI::TES4FileBSA_UI(QWidget *parent, QMdiArea *mdi, TES4FileBSA *bsa)
     ui->setupUi(this);
     this->mdiArea = mdi;
     this->bsa = bsa;
+
     read();
+
     updateUI();
 }
 
@@ -91,7 +93,7 @@ void TES4FileBSA_UI::on_pushButton_Open_clicked()
     File f = bsa->getFile(fr);
 
     QTextEdit *data = new QTextEdit();
-    data->setText(QString(f.data));
+    data->setText(QString::fromLatin1(f.data,fr.size));
 
     QMdiSubWindow *subWindowRead = new QMdiSubWindow;
     subWindowRead->setParent(mdiArea);
@@ -100,13 +102,14 @@ void TES4FileBSA_UI::on_pushButton_Open_clicked()
     subWindowRead->setWindowTitle(QString::number(fr.nameHash,16).toUpper());
     subWindowRead->show();
 
-    mdiArea->addSubWindow(subWindowRead);
+    // mdiArea->addSubWindow(subWindowRead);
 }
 
 void TES4FileBSA_UI::on_pushButton_Save_clicked()
 {
     if(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow() == -1)
         return;
+
     FileRecord fr = linearFilesRecord.at(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow());
     File f = bsa->getFile(fr);
 
