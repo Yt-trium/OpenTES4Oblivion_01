@@ -55,7 +55,7 @@ void TES4FileBSA_UI::updateUI()
     ui->tableWidget_FolderRecords->resizeRowsToContents();
 
     // fileRecordBlocks & fileNameBlock
-    std::vector<FileRecordBlock> fileRecordBlocks = bsa->getFileRecordBlocks();
+    this->fileRecordBlocks = bsa->getFileRecordBlocks();
     std::vector<std::string> fileNameBlock = bsa->getFileNameBlock();
 
     for(i=0;i<fileRecordBlocks.size();i++)
@@ -69,7 +69,6 @@ void TES4FileBSA_UI::updateUI()
         for(j=0;j<fileRecordBlock.fileRecord.size();j++)
         {
             FileRecord fileRecord = fileRecordBlock.fileRecord.at(j);
-            linearFilesRecord.push_back(fileRecord);
 
             fileRecordTreeItem = new QTreeWidgetItem(fileRecordBlockTreeItem);
 
@@ -87,41 +86,15 @@ void TES4FileBSA_UI::updateUI()
 
     for(int i = 0; i < 5; i++)
         ui->treeWidget_FileRecordBlocksAndFileNameBlock->resizeColumnToContents(i);
-
-    /*
-    for(i=0;i<fileRecordBlocks.size();i++)
-    {
-        FileRecordBlock fileRecordBlock = fileRecordBlocks.at(i);
-
-        for(j=0;j<fileRecordBlock.fileRecord.size();j++)
-        {
-            ui->tableWidget_FileRecordBlocksAndFileNameBlock->insertRow(ui->tableWidget_FileRecordBlocksAndFileNameBlock->rowCount());
-
-            FileRecord fileRecord = fileRecordBlock.fileRecord.at(j);
-            linearFilesRecord.push_back(fileRecord);
-
-            ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,0,new QTableWidgetItem(QString(fileRecordBlock.name.string)));
-            ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,1,new QTableWidgetItem(QString::number(fileRecord.nameHash,16).toUpper()));
-            ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,2,new QTableWidgetItem(QString::number(fileRecord.size)));
-            ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,3,new QTableWidgetItem(QString::number(fileRecord.offset)));
-
-            if(fileNameBlock.size() > k)
-                ui->tableWidget_FileRecordBlocksAndFileNameBlock->setItem(k,4,new QTableWidgetItem(QString(fileNameBlock.at(k).c_str())));
-
-            k++;
-        }
-    }
-    ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeColumnsToContents();
-    ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeRowsToContents();
-    */
 }
 
 void TES4FileBSA_UI::on_pushButton_Open_clicked()
 {
-    if(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow() == -1)
+    QModelIndex index = ui->treeWidget_FileRecordBlocksAndFileNameBlock->currentIndex();
+    if(!(index.isValid() && index.parent().isValid()))
         return;
 
-    FileRecord fr = linearFilesRecord.at(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow());
+    FileRecord fr = fileRecordBlocks.at(index.parent().row()).fileRecord.at(index.row());
     File f = bsa->getFile(fr);
 
     QTextEdit *data = new QTextEdit();
@@ -139,10 +112,11 @@ void TES4FileBSA_UI::on_pushButton_Open_clicked()
 
 void TES4FileBSA_UI::on_pushButton_Save_clicked()
 {
-    if(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow() == -1)
+    QModelIndex index = ui->treeWidget_FileRecordBlocksAndFileNameBlock->currentIndex();
+    if(!(index.isValid() && index.parent().isValid()))
         return;
 
-    FileRecord fr = linearFilesRecord.at(ui->tableWidget_FileRecordBlocksAndFileNameBlock->currentRow());
+    FileRecord fr = fileRecordBlocks.at(index.parent().row()).fileRecord.at(index.row());
     File f = bsa->getFile(fr);
 
     QString filename =

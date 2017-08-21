@@ -31,7 +31,7 @@ private:
     Ui::TES4FileBSA_UI *ui;
     QMdiArea *mdiArea;
     TES4FileBSA *bsa;
-    std::vector<FileRecord> linearFilesRecord;
+    std::vector<FileRecordBlock> fileRecordBlocks;
 
     void read();
     void updateUI();
