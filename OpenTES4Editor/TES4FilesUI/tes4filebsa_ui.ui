@@ -149,6 +149,35 @@
      </layout>
     </widget>
    </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QTreeWidget" name="treeWidget_FileRecordBlocksAndFileNameBlock">
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>nameHash</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>size</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>offset</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>fileName</string>
+      </property>
+     </column>
+    </widget>
+   </item>
    <item row="1" column="2">
     <widget class="QTableWidget" name="tableWidget_FolderRecords">
      <column>
@@ -181,35 +210,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
-    <widget class="QTableWidget" name="tableWidget_FileRecordBlocksAndFileNameBlock">
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>nameHash</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>size</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>offset</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>fileName</string>
-      </property>
-     </column>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="3">
     <widget class="QLabel" name="label_FileRecordBlocksAndFileNameBlock">
      <property name="text">
@@ -220,14 +220,14 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
+   <item row="4" column="2">
     <widget class="QPushButton" name="pushButton_Save">
      <property name="text">
       <string>Save file</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="4" column="1">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -253,40 +253,11 @@
      </property>
     </spacer>
    </item>
-   <item row="5" column="0">
+   <item row="4" column="0">
     <widget class="QPushButton" name="pushButton_Open">
      <property name="text">
       <string>Open file</string>
      </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3">
-    <widget class="QTreeWidget" name="treeWidget_FileRecordBlocksAndFileNameBlock">
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>nameHash</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>size</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>offset</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>fileName</string>
-      </property>
-     </column>
     </widget>
    </item>
   </layout>
