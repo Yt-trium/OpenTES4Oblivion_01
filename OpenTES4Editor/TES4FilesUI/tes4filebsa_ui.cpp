@@ -95,15 +95,36 @@ void TES4FileBSA_UI::on_pushButton_Open_clicked()
     FileRecord fr = fileRecordBlocks.at(index.parent().row()).fileRecord.at(index.row());
     File f = bsa->getFile(fr);
 
-    QTextEdit *data = new QTextEdit();
-    data->setText(QString::fromLatin1(f.data,fr.size));
 
-    QMdiSubWindow *subWindowRead = new QMdiSubWindow;
-    subWindowRead->setParent(mdiArea);
-    subWindowRead->setWidget(data);
-    subWindowRead->setAttribute(Qt::WA_DeleteOnClose);
-    subWindowRead->setWindowTitle(QString::number(fr.nameHash,16).toUpper());
-    subWindowRead->show();
+    QFileInfo fileInfo(ui->treeWidget_FileRecordBlocksAndFileNameBlock->currentItem()->text(4));
+    if(fileInfo.completeSuffix() == "wav")
+    {
+        QByteArray arr(f.data,fr.size);
+
+        QMediaPlayer *player = new QMediaPlayer();
+
+        QBuffer *buffer = new QBuffer(player);
+        buffer->setData(arr);
+        buffer->open(QIODevice::ReadOnly);
+
+
+        player->setMedia(QMediaContent(),buffer);
+
+        player->setVolume(50);
+        player->play();
+    }
+    else
+    {
+        QTextEdit *data = new QTextEdit();
+        data->setText(QString::fromLatin1(f.data,fr.size));
+
+        QMdiSubWindow *subWindowRead = new QMdiSubWindow;
+        subWindowRead->setParent(mdiArea);
+        subWindowRead->setWidget(data);
+        subWindowRead->setAttribute(Qt::WA_DeleteOnClose);
+        subWindowRead->setWindowTitle(QString::number(fr.nameHash,16).toUpper());
+        subWindowRead->show();
+    }
 
     // mdiArea->addSubWindow(subWindowRead);
 }
@@ -126,4 +147,9 @@ void TES4FileBSA_UI::on_pushButton_Save_clicked()
         std::ofstream outfile (filename.toStdString().c_str(),std::ofstream::binary);
         outfile.write(f.data, fr.size);
     }
+}
+
+void TES4FileBSA_UI::on_treeWidget_FileRecordBlocksAndFileNameBlock_doubleClicked(const QModelIndex &index)
+{
+    on_pushButton_Open_clicked();
 }

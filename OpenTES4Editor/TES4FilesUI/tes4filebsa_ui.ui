@@ -240,7 +240,7 @@
    <item row="1" column="2">
     <widget class="QTreeWidget" name="treeWidget_FolderRecords">
      <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContents</enum>
+      <enum>QAbstractScrollArea::AdjustIgnored</enum>
      </property>
      <column>
       <property name="text">

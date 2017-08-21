@@ -8,6 +8,8 @@
 #include <QMdiSubWindow>
 #include <QFileDialog>
 #include <QTextEdit>
+#include <QBuffer>
+#include <QMediaPlayer>
 
 #include "TES4Files/tes4files.h"
 
@@ -26,6 +28,8 @@ public:
 private slots:
     void on_pushButton_Open_clicked();
     void on_pushButton_Save_clicked();
+
+    void on_treeWidget_FileRecordBlocksAndFileNameBlock_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::TES4FileBSA_UI *ui;
