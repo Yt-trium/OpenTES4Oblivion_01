@@ -10,10 +10,98 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>TES4FileBSA</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="0" colspan="3">
+    <widget class="QTreeWidget" name="treeWidget_FileRecordBlocksAndFileNameBlock">
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>nameHash</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>size</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>offset</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>fileName</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_FolderRecords">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>FolderRecords</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QLabel" name="label_FileRecordBlocksAndFileNameBlock">
+     <property name="text">
+      <string>FileRecordBlocks &amp; FileNameBlock</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="pushButton_Save">
+     <property name="text">
+      <string>Save file</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0">
+    <widget class="QPushButton" name="pushButton_Open">
+     <property name="text">
+      <string>Open file</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0" rowspan="2">
     <widget class="QGroupBox" name="groupBoxHeader">
      <property name="title">
@@ -149,37 +237,11 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
-    <widget class="QTreeWidget" name="treeWidget_FileRecordBlocksAndFileNameBlock">
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>nameHash</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>size</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>offset</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>fileName</string>
-      </property>
-     </column>
-    </widget>
-   </item>
    <item row="1" column="2">
-    <widget class="QTableWidget" name="tableWidget_FolderRecords">
+    <widget class="QTreeWidget" name="treeWidget_FolderRecords">
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
      <column>
       <property name="text">
        <string>nameHash</string>
@@ -195,69 +257,6 @@
        <string>offset</string>
       </property>
      </column>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_FolderRecords">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>FolderRecords</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QLabel" name="label_FileRecordBlocksAndFileNameBlock">
-     <property name="text">
-      <string>FileRecordBlocks &amp; FileNameBlock</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QPushButton" name="pushButton_Save">
-     <property name="text">
-      <string>Save file</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="1">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="pushButton_Open">
-     <property name="text">
-      <string>Open file</string>
-     </property>
     </widget>
    </item>
   </layout>

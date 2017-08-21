@@ -32,27 +32,24 @@ void TES4FileBSA_UI::updateUI()
     ui->label_fileId_->setText(QString(bsa->getHeader().fileId));
     ui->label_version_->setText(QString::number(bsa->getHeader().version));
     ui->label_offset_->setText(QString::number(bsa->getHeader().offset));
-    ui->label_archiveFlags_->setText(QString::number(bsa->getHeader().archiveFlags,2));
+    ui->label_archiveFlags_->setText(QString::number(bsa->getHeader().archiveFlags,2).rightJustified(32,'0'));
     ui->label_folderCount_->setText(QString::number(bsa->getHeader().folderCount));
     ui->label_fileCount_->setText(QString::number(bsa->getHeader().fileCount));
     ui->label_totalFolderNameLength_->setText(QString::number(bsa->getHeader().totalFolderNameLength));
     ui->label_totalFileNameLength_->setText(QString::number(bsa->getHeader().totalFileNameLength));
-    ui->label_fileFlags_->setText(QString::number(bsa->getHeader().fileFlags,2));
+    ui->label_fileFlags_->setText(QString::number(bsa->getHeader().fileFlags,2).rightJustified(32,'0'));
 
     // folderRecords
     std::vector<FolderRecord> folderRecords = bsa->getFolderRecords();
     for(i=0;i<folderRecords.size();i++)
     {
-        ui->tableWidget_FolderRecords->insertRow(ui->tableWidget_FolderRecords->rowCount());
+        QTreeWidgetItem *folderRecordTreeItem = new QTreeWidgetItem(ui->treeWidget_FolderRecords);
 
         FolderRecord folderRecord = folderRecords.at(i);
-
-        ui->tableWidget_FolderRecords->setItem(i,0,new QTableWidgetItem(QString::number(folderRecord.nameHash,16).toUpper()));
-        ui->tableWidget_FolderRecords->setItem(i,1,new QTableWidgetItem(QString::number(folderRecord.count)));
-        ui->tableWidget_FolderRecords->setItem(i,2,new QTableWidgetItem(QString::number(folderRecord.offset)));
+        folderRecordTreeItem->setText(0,QString::number(folderRecord.nameHash,16).toUpper());
+        folderRecordTreeItem->setText(1,QString::number(folderRecord.count));
+        folderRecordTreeItem->setText(2,QString::number(folderRecord.offset));
     }
-    ui->tableWidget_FolderRecords->resizeColumnsToContents();
-    ui->tableWidget_FolderRecords->resizeRowsToContents();
 
     // fileRecordBlocks & fileNameBlock
     this->fileRecordBlocks = bsa->getFileRecordBlocks();
@@ -83,9 +80,10 @@ void TES4FileBSA_UI::updateUI()
         }
         // fileRecordBlockTreeItem->addChild(fileRecordTreeItem);
     }
-
+    /*
     for(int i = 0; i < 5; i++)
         ui->treeWidget_FileRecordBlocksAndFileNameBlock->resizeColumnToContents(i);
+    */
 }
 
 void TES4FileBSA_UI::on_pushButton_Open_clicked()
