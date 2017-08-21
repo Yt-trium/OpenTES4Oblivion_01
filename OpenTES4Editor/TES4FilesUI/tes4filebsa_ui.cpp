@@ -62,6 +62,37 @@ void TES4FileBSA_UI::updateUI()
     {
         FileRecordBlock fileRecordBlock = fileRecordBlocks.at(i);
 
+        QTreeWidgetItem *fileRecordBlockTreeItem = new QTreeWidgetItem(ui->treeWidget_FileRecordBlocksAndFileNameBlock);
+        QTreeWidgetItem *fileRecordTreeItem;
+        fileRecordBlockTreeItem->setText(0, QString(fileRecordBlock.name.string));
+
+        for(j=0;j<fileRecordBlock.fileRecord.size();j++)
+        {
+            FileRecord fileRecord = fileRecordBlock.fileRecord.at(j);
+            linearFilesRecord.push_back(fileRecord);
+
+            fileRecordTreeItem = new QTreeWidgetItem(fileRecordBlockTreeItem);
+
+            fileRecordTreeItem->setText(1, QString::number(fileRecord.nameHash,16));
+            fileRecordTreeItem->setText(2, QString::number(fileRecord.size));
+            fileRecordTreeItem->setText(3, QString::number(fileRecord.offset));
+
+            if(fileNameBlock.size() > k)
+                fileRecordTreeItem->setText(4, QString(fileNameBlock.at(k).c_str()));
+
+            k++;
+        }
+        // fileRecordBlockTreeItem->addChild(fileRecordTreeItem);
+    }
+
+    for(int i = 0; i < 5; i++)
+        ui->treeWidget_FileRecordBlocksAndFileNameBlock->resizeColumnToContents(i);
+
+    /*
+    for(i=0;i<fileRecordBlocks.size();i++)
+    {
+        FileRecordBlock fileRecordBlock = fileRecordBlocks.at(i);
+
         for(j=0;j<fileRecordBlock.fileRecord.size();j++)
         {
             ui->tableWidget_FileRecordBlocksAndFileNameBlock->insertRow(ui->tableWidget_FileRecordBlocksAndFileNameBlock->rowCount());
@@ -82,6 +113,7 @@ void TES4FileBSA_UI::updateUI()
     }
     ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeColumnsToContents();
     ui->tableWidget_FileRecordBlocksAndFileNameBlock->resizeRowsToContents();
+    */
 }
 
 void TES4FileBSA_UI::on_pushButton_Open_clicked()
