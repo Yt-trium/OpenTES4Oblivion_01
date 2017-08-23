@@ -21,7 +21,9 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     TES4Files/tes4filebsa.cpp \
-    TES4FilesUI/tes4filebsa_ui.cpp
+    TES4FilesUI/tes4filebsa_ui.cpp \
+    TES4Files/tes4fileesmp.cpp \
+    TES4FilesUI/tes4fileesmp_ui.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -30,10 +32,13 @@ HEADERS += \
     TES4Files/tes4filestypes.h \
     TES4FilesUI/tes4filebsa_ui.h \
     TES4FilesUI/tes4files_ui.h \
-    TES4Files/tes4filebsastructs.h
+    TES4Files/tes4filebsastructs.h \
+    TES4Files/tes4fileesmp.h \
+    TES4FilesUI/tes4fileesmp_ui.h
 
 FORMS += \
         mainwindow.ui \
-    TES4FilesUI/tes4filebsa_ui.ui
+    TES4FilesUI/tes4filebsa_ui.ui \
+    TES4FilesUI/tes4fileesmp_ui.ui
 
 LIBS += -lz
