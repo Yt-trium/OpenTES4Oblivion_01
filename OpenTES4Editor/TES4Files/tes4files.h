@@ -7,5 +7,6 @@
 #include "tes4filebsa.h"
 #include "tes4filebsastructs.h"
 #include "tes4fileesmp.h"
+#include "tes4fileesmpstructs.h"
 
 #endif // TES4FILES_H

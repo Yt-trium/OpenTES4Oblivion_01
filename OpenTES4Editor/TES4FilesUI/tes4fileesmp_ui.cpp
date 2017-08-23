@@ -8,6 +8,10 @@ TES4FileESMP_UI::TES4FileESMP_UI(QWidget *parent, QMdiArea *mdi, TES4FileESMP *e
     ui->setupUi(this);
     this->mdiArea = mdi;
     this->esmp = esmp;
+
+    read();
+
+    updateUI();
 }
 
 TES4FileESMP_UI::~TES4FileESMP_UI()
@@ -17,7 +21,7 @@ TES4FileESMP_UI::~TES4FileESMP_UI()
 
 void TES4FileESMP_UI::read()
 {
-    // esmp->read();
+    esmp->read();
 }
 
 void TES4FileESMP_UI::updateUI()

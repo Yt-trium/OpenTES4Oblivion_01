@@ -34,7 +34,8 @@ HEADERS += \
     TES4FilesUI/tes4files_ui.h \
     TES4Files/tes4filebsastructs.h \
     TES4Files/tes4fileesmp.h \
-    TES4FilesUI/tes4fileesmp_ui.h
+    TES4FilesUI/tes4fileesmp_ui.h \
+    TES4Files/tes4fileesmpstructs.h
 
 FORMS += \
         mainwindow.ui \
